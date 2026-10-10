@@ -1,0 +1,79 @@
+import React from 'react';
+import {
+  IonButton,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonSegment,
+  IonSegmentButton,
+} from '@ionic/react';
+
+const GlobeScreen: React.FC = () => {
+  return (
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Globe</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent className="ion-padding" color="dark">
+        <IonCard>
+          <IonCardHeader>
+            <IonCardTitle>Earth Overview</IonCardTitle>
+          </IonCardHeader>
+          <IonCardContent>
+            <div
+              style={{
+                height: 260,
+                borderRadius: 18,
+                background: 'radial-gradient(circle at 30% 30%, #1c90ff 0%, #071a2f 35%, #040d16 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#dfefff',
+                fontWeight: 700,
+                letterSpacing: 1,
+              }}
+            >
+              EARTH VIEW
+            </div>
+
+            <div style={{ marginTop: 16, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <IonButton size="small">Live</IonButton>
+              <IonButton size="small" fill="outline">Focused</IonButton>
+              <IonButton size="small" fill="outline">Orbit</IonButton>
+            </div>
+          </IonCardContent>
+        </IonCard>
+
+        <IonCard>
+          <IonCardHeader>
+            <IonCardTitle>Camera View</IonCardTitle>
+          </IonCardHeader>
+          <IonCardContent>
+            <IonSegment value="overview">
+              <IonSegmentButton value="overview">
+                Overview
+              </IonSegmentButton>
+              <IonSegmentButton value="cockpit">
+                Cockpit
+              </IonSegmentButton>
+              <IonSegmentButton value="terrain">
+                Terrain
+              </IonSegmentButton>
+            </IonSegment>
+          </IonCardContent>
+        </IonCard>
+      </IonContent>
+    </IonPage>
+  );
+};
+
+export default GlobeScreen;

@@ -1,0 +1,101 @@
+/**
+ * Root mobile app component.
+ * Uses Ionic tabs for polished mobile navigation.
+ */
+
+import React, { useEffect } from 'react';
+import {
+  IonApp,
+  IonRouterOutlet,
+  IonTabBar,
+  IonTabButton,
+  IonTabs,
+  IonLabel,
+  IonIcon,
+} from '@ionic/react';
+import { IonReactRouter } from '@ionic/react-router';
+import { Redirect, Route } from 'react-router-dom';
+import {
+  globeOutline,
+  layersOutline,
+  settingsOutline,
+  shieldCheckmarkOutline,
+  homeOutline,
+  cloudUploadOutline,
+} from 'ionicons/icons';
+import { StatusBar, Style } from '@capacitor/status-bar';
+import { SplashScreen } from '@capacitor/splash-screen';
+
+import { MOBILE_CONFIG } from './config';
+import HomeScreen from './screens/HomeScreen';
+import GlobeScreen from './screens/GlobeScreen';
+import LayersScreen from './screens/LayersScreen';
+import ProvidersScreen from './screens/ProvidersScreen';
+import AdminScreen from './screens/AdminScreen';
+import SettingsScreen from './screens/SettingsScreen';
+
+const App: React.FC = () => {
+  useEffect(() => {
+    const initializeApp = async () => {
+      try {
+        await StatusBar.setStyle({ style: Style.Light });
+        await StatusBar.setBackgroundColor({
+          color: MOBILE_CONFIG.ui.backgroundColor,
+        });
+        await new Promise((resolve) => setTimeout(resolve, 1200));
+        await SplashScreen.hide();
+      } catch (error) {
+        console.error('App initialization error:', error);
+      }
+    };
+
+    initializeApp();
+  }, []);
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route path="/" render={() => <Redirect to="/home" />} exact />
+            <Route path="/home" component={HomeScreen} exact />
+            <Route path="/globe" component={GlobeScreen} exact />
+            <Route path="/layers" component={LayersScreen} exact />
+            <Route path="/providers" component={ProvidersScreen} exact />
+            <Route path="/admin" component={AdminScreen} exact />
+            <Route path="/settings" component={SettingsScreen} exact />
+          </IonRouterOutlet>
+
+          <IonTabBar slot="bottom" translucent>
+            <IonTabButton tab="home" href="/home">
+              <IonIcon icon={homeOutline} />
+              <IonLabel>Home</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="globe" href="/globe">
+              <IonIcon icon={globeOutline} />
+              <IonLabel>Globe</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="layers" href="/layers">
+              <IonIcon icon={layersOutline} />
+              <IonLabel>Layers</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="providers" href="/providers">
+              <IonIcon icon={cloudUploadOutline} />
+              <IonLabel>Providers</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="admin" href="/admin">
+              <IonIcon icon={shieldCheckmarkOutline} />
+              <IonLabel>Admin</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="settings" href="/settings">
+              <IonIcon icon={settingsOutline} />
+              <IonLabel>Settings</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
+
+export default App;

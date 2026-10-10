@@ -1,0 +1,65 @@
+import React, { useState } from 'react';
+import {
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonContent,
+  IonHeader,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonPage,
+  IonToggle,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/react';
+
+const SettingsScreen: React.FC = () => {
+  const [settings, setSettings] = useState({
+    darkMode: true,
+    voiceOn: true,
+    offlineCache: true,
+    pushAlerts: false,
+  });
+
+  return (
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Settings</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent className="ion-padding" color="dark">
+        <IonCard>
+          <IonCardHeader>
+            <IonCardTitle>Preferences</IonCardTitle>
+          </IonCardHeader>
+          <IonCardContent>
+            <IonList>
+              <IonItem>
+                <IonLabel>Dark mode</IonLabel>
+                <IonToggle checked={settings.darkMode} />
+              </IonItem>
+              <IonItem>
+                <IonLabel>Voice assistant</IonLabel>
+                <IonToggle checked={settings.voiceOn} />
+              </IonItem>
+              <IonItem>
+                <IonLabel>Offline cache</IonLabel>
+                <IonToggle checked={settings.offlineCache} />
+              </IonItem>
+              <IonItem>
+                <IonLabel>Push alerts</IonLabel>
+                <IonToggle checked={settings.pushAlerts} />
+              </IonItem>
+            </IonList>
+          </IonCardContent>
+        </IonCard>
+      </IonContent>
+    </IonPage>
+  );
+};
+
+export default SettingsScreen;

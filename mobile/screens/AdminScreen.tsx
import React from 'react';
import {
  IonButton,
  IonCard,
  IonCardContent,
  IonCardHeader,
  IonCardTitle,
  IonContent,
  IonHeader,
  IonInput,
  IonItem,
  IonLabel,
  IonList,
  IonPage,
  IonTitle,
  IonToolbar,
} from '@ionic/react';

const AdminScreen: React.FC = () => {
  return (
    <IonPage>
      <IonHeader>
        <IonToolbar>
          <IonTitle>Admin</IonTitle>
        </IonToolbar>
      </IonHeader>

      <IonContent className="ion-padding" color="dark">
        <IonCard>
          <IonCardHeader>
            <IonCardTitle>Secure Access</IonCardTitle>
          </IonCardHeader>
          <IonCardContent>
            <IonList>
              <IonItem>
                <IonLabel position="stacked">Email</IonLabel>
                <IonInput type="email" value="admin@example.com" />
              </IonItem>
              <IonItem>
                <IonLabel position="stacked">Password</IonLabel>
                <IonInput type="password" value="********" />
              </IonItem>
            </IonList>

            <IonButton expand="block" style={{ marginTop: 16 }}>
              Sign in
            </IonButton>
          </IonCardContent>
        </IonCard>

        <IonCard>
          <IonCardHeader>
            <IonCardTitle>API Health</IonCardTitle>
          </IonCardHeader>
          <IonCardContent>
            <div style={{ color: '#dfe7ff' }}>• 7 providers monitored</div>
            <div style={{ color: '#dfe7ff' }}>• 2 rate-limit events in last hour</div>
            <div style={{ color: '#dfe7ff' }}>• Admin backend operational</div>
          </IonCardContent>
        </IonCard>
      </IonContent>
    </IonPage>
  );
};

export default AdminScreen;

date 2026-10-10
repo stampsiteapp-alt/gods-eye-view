@@ -1,0 +1,58 @@
+import React from 'react';
+import {
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonBadge,
+  IonItem,
+  IonLabel,
+  IonList,
+} from '@ionic/react';
+
+const providers = [
+  { name: 'OpenAI Realtime', status: 'Ready', color: 'success' },
+  { name: 'Cesium Ion', status: 'Connected', color: 'primary' },
+  { name: 'Google Maps', status: 'Enabled', color: 'tertiary' },
+  { name: 'AISStream', status: 'Live', color: 'success' },
+  { name: 'TomTom', status: 'Queued', color: 'warning' },
+  { name: 'OpenSky', status: 'Anon', color: 'medium' },
+  { name: 'FIRMS', status: 'Enabled', color: 'secondary' },
+];
+
+const ProvidersScreen: React.FC = () => {
+  return (
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Providers</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent className="ion-padding" color="dark">
+        <IonCard>
+          <IonCardHeader>
+            <IonCardTitle>Provider Status</IonCardTitle>
+          </IonCardHeader>
+          <IonCardContent>
+            <IonList>
+              {providers.map((provider) => (
+                <IonItem key={provider.name} lines="full">
+                  <IonLabel>{provider.name}</IonLabel>
+                  <IonBadge color={provider.color as any}>{provider.status}</IonBadge>
+                </IonItem>
+              ))}
+            </IonList>
+          </IonCardContent>
+        </IonCard>
+      </IonContent>
+    </IonPage>
+  );
+};
+
+export default ProvidersScreen;
