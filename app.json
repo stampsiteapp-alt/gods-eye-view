@@ -1,0 +1,11 @@
+{
+  "name": "Gods Eye View",
+  "displayName": "Gods Eye View",
+  "expo": {
+    "name": "Gods Eye View",
+    "slug": "gods-eye-view",
+    "version": "1.0.0",
+    "assetBundlePatterns": ["**/*"],
+    "platforms": ["ios", "android", "web"]
+  }
+}
