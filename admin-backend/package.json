@@ -1,0 +1,19 @@
+{
+  "name": "gods-eye-view-admin",
+  "version": "1.0.0",
+  "description": "Admin and API orchestration backend for Gods Eye View",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "uuid": "^10.0.0"
+  }
+}
